@@ -43,12 +43,12 @@ Let's make our movie list more child-friendly. Delete all entries that have a ra
 
 Create a `PersonService` class. These will be used to manipulate the contents of the database given program requirements. Remember to use a `JdbcTemplate` to provide access to your database. All database access logic and sorting/filtering should be handled by your `PersonService` and the SQL queries it issues to the database.
 
-You can provide your `PersonService` to any controller that needs it by marking it as a `@Service` class and autowiring it into the appropriate controller. Remember that you will also need a corresponding `Person` class to hold the data in transit. You do not need to use any of the JPA annotations (`@ID`, `@Entity` etc.) in your Person class.
+You can provide your `PersonService` to any controller that needs it by marking it as a `@services` class and autowiring it into the appropriate controller. Remember that you will also need a corresponding `services` class to hold the data in transit. You do not need to use any of the JPA annotations (`@ID`, `@Entity` etc.) in your services class.
 
 Support the following operations:
 
-- Add a `Person` to the database
-- Update an existing `Person` in the database
+- Add a `services` to the database
+- Update an existing `services` in the database
 - Remove a person from the database
 - remove a list of people from the database
 - find all people with a particular first name, last name, or birthdate
@@ -75,7 +75,7 @@ fields:
 | ID | ADDRESS | HOMENUMBER |
 |----|---------|------------|
 
-People in the 'Person' table are able to have a home from the 'Home' table associated with them.
+People in the 'services' table are able to have a home from the 'Home' table associated with them.
 People are mapped to homes through their 'HOME_ID' value which is a foreign key that references the id column in the 'HOME' table
 
 Add the following homes to the 'HOME' table
@@ -122,9 +122,9 @@ Find the home number of John Smith
  
 In this section we're going to re-create our service class using JPA. 
 
-Start by breaking your `PersonService` class into an interface and implementation eg: `interface PersonService` and `class JdbcPersonServiceImpl`. Place the `@Service` annotation on the implementation class.
+Start by breaking your `PersonService` class into an interface and implementation eg: `interface PersonService` and `class JdbcPersonServiceImpl`. Place the `@services` annotation on the implementation class.
 
-Now create a new class that implements the PersonService, this time with JPA. Once you annotate this class with @Service you will get an error when you start spring -- you can fix this by annotation the service you want to use with `@Primary` -- This tells Spring that if there are multiple beans competing for autowiring, the one marked with `@Primary` should be used (this won't work if multiple competing beans are marked `@Primary`
+Now create a new class that implements the PersonService, this time with JPA. Once you annotate this class with @services you will get an error when you start spring -- you can fix this by annotation the service you want to use with `@Primary` -- This tells Spring that if there are multiple beans competing for autowiring, the one marked with `@Primary` should be used (this won't work if multiple competing beans are marked `@Primary`
 
 In your `JdbcPersonServiceImpl` you used a `JdbcTemplate` or `NamedParameterJdbcTemplate` to access the database. In your `JpaPersonServiceImpl` you will use a `PersonRepository` instead. You will have to define the interface for this repository, but the Spring Framework will provide the implementation automatically.
 

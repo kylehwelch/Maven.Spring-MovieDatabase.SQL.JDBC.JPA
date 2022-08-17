@@ -41,3 +41,4 @@ SELECT AVG(imdb_score) AS avg, MAX(imdb_score) as min, MIN(imdb_score) as min FR
 GROUP BY Rating HAVING COUNT(*) > 1;
 
 DELETE FROM movies WHERE rating = 'R';
+
