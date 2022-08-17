@@ -3,14 +3,12 @@ package controllers;
 import models.Person;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import services.PersonService;
 
 import javax.xml.ws.Response;
 
-@Controller
-@RequestMapping
+@RestController
 public class PersonController {
 
     private PersonService service;
@@ -23,7 +21,7 @@ public class PersonController {
         return new ResponseEntity<>(service.index(), HttpStatus.OK);
     }
 
-    @PostMapping("/person/")
+    @PostMapping("/person")
     public ResponseEntity<Person> create (@RequestBody Person person) {
         return new ResponseEntity<>(service.create(person), HttpStatus.OK);
     }
@@ -34,7 +32,7 @@ public class PersonController {
     }
 
     @PutMapping("/person/{id}")
-    public ResponseEntity<Person> update (@PathVariable Integer id, Person person) {
+    public ResponseEntity<Person> update (@PathVariable Integer id, @RequestBody Person person) {
         return new ResponseEntity<>(service.update(id, person), HttpStatus.OK);
     }
 
