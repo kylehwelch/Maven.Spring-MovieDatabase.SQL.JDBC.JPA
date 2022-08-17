@@ -1,4 +1,4 @@
-package models;
+package io.zipcoder.persistenceapp.models;
 
 import java.sql.Date;
 import javax.persistence.*;

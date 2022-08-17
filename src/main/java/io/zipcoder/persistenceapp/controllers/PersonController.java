@@ -1,12 +1,10 @@
-package controllers;
+package io.zipcoder.persistenceapp.controllers;
 
-import models.Person;
+import io.zipcoder.persistenceapp.models.Person;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.PersonService;
-
-import javax.xml.ws.Response;
+import io.zipcoder.persistenceapp.services.PersonService;
 
 @RestController
 public class PersonController {

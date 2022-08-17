@@ -1,6 +1,6 @@
-package Repositories;
+package io.zipcoder.persistenceapp.Repositories;
 
-import models.Person;
+import io.zipcoder.persistenceapp.models.Person;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
